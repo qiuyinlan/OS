@@ -1,0 +1,137 @@
+# ============================================================================
+# 通用 Makefile 模板 - 适用于《操作系统真象还原》所有章节
+# ============================================================================
+# 使用方法：
+# 1. 复制此文件到 chapter-X/ 目录，重命名为 Makefile
+# 2. 只需要修改下面的 HD60M_PATH（硬盘镜像路径）
+# 3. make all 一键编译运行
+# ============================================================================
+
+# ============================= 配置区域 =====================================
+# ⚠️ 只需要修改这一行！改成你的硬盘镜像路径
+HD60M_PATH = ../hd60M.img
+
+# 内核入口地址（一般不需要改）
+ENTRY_POINT = 0xc0001500
+# ============================================================================
+
+# ============================= 编译工具配置 ==================================
+BUILD_DIR = ./build
+AS = nasm
+CC = gcc
+LD = ld
+
+# 编译选项
+LIB = -I . -I lib/ -I lib/kernel/ -I lib/user/ -I kernel/ -I device/ -I thread/ -I userprog/ -I fs/ -I shell/
+ASFLAGS = -f elf
+ASFLAGS_BIN = -I boot/include/
+CFLAGS = -Wall $(LIB) -c -fno-builtin -W -Wstrict-prototypes -Wmissing-prototypes -m32
+LDFLAGS = -Ttext $(ENTRY_POINT) -e main -Map $(BUILD_DIR)/kernel.map -m elf_i386
+# ============================================================================
+
+# ============================= 自动检测源文件 ================================
+# 自动查找所有 C 文件（排除 build 目录）
+C_SOURCES = $(shell find . -name "*.c" ! -path "./build/*" ! -path "./.git/*")
+# 自动查找所有内核汇编文件（.S 文件，排除 boot 目录）
+S_SOURCES = $(shell find ./kernel ./lib ./device ./thread ./userprog ./fs ./shell -name "*.S" 2>/dev/null)
+
+# 生成目标文件列表
+C_OBJS = $(patsubst %.c, $(BUILD_DIR)/%.o, $(notdir $(C_SOURCES)))
+S_OBJS = $(patsubst %.S, $(BUILD_DIR)/%.o, $(notdir $(S_SOURCES)))
+
+# 所有目标文件
+OBJS = $(C_OBJS) $(S_OBJS)
+
+# 源文件搜索路径（自动添加所有包含源文件的目录）
+VPATH = $(sort $(dir $(C_SOURCES) $(S_SOURCES)))
+# ============================================================================
+
+# ============================= 编译目标 ======================================
+.PHONY: all mk_dir boot build hd clean help
+
+# 默认目标：编译并写入硬盘
+all: mk_dir boot build hd
+	@echo "✅ 编译完成！硬盘镜像已更新：$(HD60M_PATH)"
+	@echo "💡 运行命令: cd .. && bochs -f chapter-X/bochsrc.disk -q"
+
+# 创建 build 目录
+mk_dir:
+	@if [ ! -d $(BUILD_DIR) ]; then mkdir -p $(BUILD_DIR); echo "📁 创建 build 目录"; fi
+
+# 编译引导程序
+boot: $(BUILD_DIR)/mbr.bin $(BUILD_DIR)/loader.bin
+
+$(BUILD_DIR)/mbr.bin: boot/mbr.S boot/mbr.s
+	@echo "🔨 编译 MBR..."
+	@$(AS) $(ASFLAGS_BIN) -o $@ $(word 1, $(wildcard boot/mbr.S boot/mbr.s))
+
+$(BUILD_DIR)/loader.bin: boot/loader.S boot/loader.s
+	@echo "🔨 编译 Loader..."
+	@$(AS) $(ASFLAGS_BIN) -o $@ $(word 1, $(wildcard boot/loader.S boot/loader.s))
+
+# 编译内核
+build: $(BUILD_DIR)/kernel.bin
+
+# 链接内核
+$(BUILD_DIR)/kernel.bin: $(OBJS)
+	@echo "🔗 链接内核..."
+	@$(LD) $(LDFLAGS) -o $@ $^
+	@echo "✅ 内核编译完成：$@"
+
+# C 文件编译规则（通用）
+$(BUILD_DIR)/%.o: %.c
+	@echo "📝 编译 $<..."
+	@$(CC) $(CFLAGS) -o $@ $<
+
+# 汇编文件编译规则（通用）
+$(BUILD_DIR)/%.o: %.S
+	@echo "📝 编译 $<..."
+	@$(AS) $(ASFLAGS) -o $@ $<
+
+$(BUILD_DIR)/%.o: %.s
+	@echo "📝 编译 $<..."
+	@$(AS) $(ASFLAGS) -o $@ $<
+
+# 写入硬盘镜像
+hd:
+	@echo "💾 写入硬盘镜像..."
+	@dd if=$(BUILD_DIR)/mbr.bin of=$(HD60M_PATH) count=1 bs=512 conv=notrunc 2>/dev/null
+	@dd if=$(BUILD_DIR)/loader.bin of=$(HD60M_PATH) count=4 bs=512 seek=2 conv=notrunc 2>/dev/null
+	@dd if=$(BUILD_DIR)/kernel.bin of=$(HD60M_PATH) bs=512 count=200 seek=9 conv=notrunc 2>/dev/null
+	@echo "✅ 写入完成"
+
+# 清理编译文件
+clean:
+	@if [ -d $(BUILD_DIR) ]; then \
+		rm -rf $(BUILD_DIR)/*; \
+		echo "🧹 清理完成"; \
+	fi
+
+# 帮助信息
+help:
+	@echo "============================================"
+	@echo "  Makefile 使用帮助"
+	@echo "============================================"
+	@echo "  make all     - 编译并写入硬盘（默认）"
+	@echo "  make boot    - 只编译引导程序"
+	@echo "  make build   - 只编译内核"
+	@echo "  make hd      - 只写入硬盘"
+	@echo "  make clean   - 清理编译文件"
+	@echo "  make help    - 显示此帮助"
+	@echo "============================================"
+	@echo "📁 检测到的源文件："
+	@echo "  C 文件: $(words $(C_SOURCES)) 个"
+	@echo "  汇编文件: $(words $(S_SOURCES)) 个"
+	@echo "============================================"
+
+# 调试：显示检测到的文件
+debug:
+	@echo "C 源文件:"
+	@echo "$(C_SOURCES)" | tr ' ' '\n'
+	@echo ""
+	@echo "汇编源文件:"
+	@echo "$(S_SOURCES)" | tr ' ' '\n'
+	@echo ""
+	@echo "目标文件:"
+	@echo "$(OBJS)" | tr ' ' '\n'
+# ============================================================================

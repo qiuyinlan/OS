@@ -1,0 +1,21 @@
+# Bochs 通用配置文件 (适用于所有章节)
+# 放在 bochs 根目录，可被所有子目录共享使用
+
+megs: 32
+
+# BIOS and VGA BIOS (绝对路径)
+romimage: file=/home/xuzichun/下载/bochs-2.6.8/bios/BIOS-bochs-latest
+vgaromimage: file=/home/xuzichun/下载/bochs-2.6.8/bios/VGABIOS-lgpl-latest
+
+# 从硬盘启动
+boot: disk
+
+# 日志文件
+log: bochs.out
+
+# 鼠标和键盘
+mouse: enabled=0
+
+# 硬盘配置 (使用相对于 bochs 根目录的路径)
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, path="hd60M.img", mode=flat, cylinders=121, heads=16, spt=63

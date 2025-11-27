@@ -1,0 +1,69 @@
+# 编译产物
+*.o
+*.bin
+*.elf
+*.out
+*.exe
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+
+# 镜像文件
+*.img
+*.iso
+*.vdi
+*.vmdk
+
+# Bochs 相关
+bochsout.txt
+*.log
+
+# 调试文件
+*.dSYM/
+*.su
+.gdb_history
+
+# 编辑器和IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build 目录（如果需要保留 build 目录结构但不要编译产物，可以用 !build/.gitkeep）
+build/
+bin/
+obj/
+
+# 临时文件
+*.tmp
+*.bak
+*.backup
+
+# OS generated files
+.Thumbs.db
+desktop.ini
+
+# 个人配置（根据需要调整）
+.oh-my-zsh/
+.zshrc
+
+# 书籍文件夹（如果书籍文件很大，建议忽略）
+书籍/
+
+# Bochs 编译输出和二进制文件（保留源码）
+bochs/bin/
+bochs/share/
+
+# Claude Code 配置
+.claude/
+
+# myos 中的 MBR 二进制文件
+os代码/myos/mbr
+os代码/myos/c*/mbr
+
+# 如果有特定的 bochs 配置文件需要忽略
+# bochsrc.disk

@@ -1,0 +1,20 @@
+docker build -t myos-gcc:4.4 .
+docker run -it --name myos \
+  -v /home/wly/桌面/bochs:/bochs \
+  -v "/home/wly/桌面/真象还原/myOS:/home/wly/myos" \
+  myos-gcc:4.4
+
+
+
+
+
+docker start -ai myos
+nasm -o build/mbr -I chapter-5/boot/include chapter-5/boot/mbr.s
+dd if=build/mbr of=/bochs/hd60M.img bs=512 count=1 conv=notrunc
+nasm -o build/loader -I chapter-5/boot/include chapter-5/boot/loader.s
+dd if=build/loader of=/bochs/hd60M.img bs=512 count=4 conv=notrunc seek=2
+gcc-4.4 -o build/main.o -c -m32 -I lib/kernel/ chapter-5/kernel/main.c
+ld -m elf_i386 -Ttext 0x00001500 -e main -o build/kernel.bin  build/main.o
+dd if=build/kernel.bin of=/bochs/hd60M.img bs=512 count=200 conv=notrunc seek=9
+
+bin/bochs -f bochsrc.disk

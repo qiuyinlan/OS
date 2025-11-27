@@ -1,0 +1,20 @@
+# Bochs configuration for chapter-7
+megs: 32
+
+# BIOS and VGA BIOS (宿主机路径)
+romimage: file=/home/xuzichun/下载/bochs-2.6.8/bios/BIOS-bochs-latest
+vgaromimage: file=/home/xuzichun/下载/bochs-2.6.8/bios/VGABIOS-lgpl-latest
+
+# 从硬盘启动
+boot: disk
+
+# 日志文件
+log: bochs.out
+
+# 鼠标和键盘
+mouse: enabled=0
+
+# 硬盘配置
+ata0: enabled=1, ioaddr1=0x1f0, ioaddr2=0x3f0, irq=14
+ata0-master: type=disk, path="hd60M.img", mode=flat, cylinders=240, heads=16, spt=32
+ata0-slave: type=disk, path="hd80M.img", mode=flat, cylinders=320, heads=16, spt=32
