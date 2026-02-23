@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: htegm-wtxxr
+created: 2025-12-01T14:03:54+08:00

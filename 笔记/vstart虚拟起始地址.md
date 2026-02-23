@@ -1,6 +1,6 @@
 # vstart虚拟起始地址
 
-[[NASM汇编器]] [[MBR主引导记录]] [[段]]
+[[nasm]] [[MBR主引导记录]] [[段]]
 
 ## 什么是 vstart
 
@@ -166,7 +166,7 @@ SECTION MBR vstart=0x7c00
     ; 代码...
 ```
 
-参见：[[NASM汇编器]]
+参见：[[nasm]]
 
 ## 重要概念
 
@@ -228,7 +228,7 @@ SECTION loader vstart=0x900
 - 查符号表，得到 `message = 0x7C03`
 - 生成机器码：`mov ax, 0x7C03`
 
-参见：[[NASM汇编器]]
+参见：[[nasm]]
 
 ## 总结
 

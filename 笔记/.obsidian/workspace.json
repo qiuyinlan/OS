@@ -13,113 +13,70 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "章节和代码知识index/代码/c3代码.md",
+                "file": "章节和代码知识index/0.0学习.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "c3代码"
+              "title": "0.0学习"
             }
           },
           {
-            "id": "867accab6d3e9321",
+            "id": "fb3fe54b2c204735",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "章节和代码知识index/0汇编语法.md",
+                "file": "章节和代码知识index/0.0学习.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0汇编语法"
+              "title": "0.0学习"
             }
           },
           {
-            "id": "2903dad909a8a427",
+            "id": "fcf85a410567988a",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "index/操作系统真象还原 (郑纲) (Z-Library).pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "操作系统真象还原 (郑纲) (Z-Library)"
+            }
+          },
+          {
+            "id": "5ca04711c8dc19bc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "显卡.md",
+                "file": "FAT文件系统.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "显卡"
+              "title": "FAT文件系统"
             }
           },
           {
-            "id": "ec106cd899adb2e8",
+            "id": "ea52d10921b6e4cc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "章节和代码知识index/bochs.md",
+                "file": "inode.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "bochs"
-            }
-          },
-          {
-            "id": "7b1235d87612589e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "章节和代码知识index/2 编写MBR主引导记录.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2 编写MBR主引导记录"
-            }
-          },
-          {
-            "id": "5a946aa52fb5d48d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "章节和代码知识index/文件与工具.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "文件与工具"
-            }
-          },
-          {
-            "id": "e9fefa7a5884f516",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中断-功能号.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "中断-功能号"
-            }
-          },
-          {
-            "id": "0c1e00732f312ab9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "章节和代码知识index/0汇编语法.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "0汇编语法"
+              "title": "inode"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -151,7 +108,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "0x1F",
+                "query": "part2",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -172,8 +129,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -193,7 +149,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "章节和代码知识index/代码/c3代码.md",
+                "file": "FAT文件系统.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -203,7 +159,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "c3代码 的反向链接列表"
+              "title": "FAT文件系统 的反向链接列表"
             }
           },
           {
@@ -255,17 +211,16 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "章节和代码知识index/代码/c3代码.md",
+                "file": "FAT文件系统.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "c3代码 的大纲"
+              "title": "FAT文件系统 的大纲"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "horizontal",
@@ -279,53 +234,49 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:创建新数据库": false,
-      "obsidian-livesync:P2P Replicator": false,
-      "obsidian-livesync:Show Log": false,
-      "obsidian-livesync:Replicate": false,
-      "obsidian-livesync:Show Customization sync": false
+      "bases:创建新数据库": false
     }
   },
-  "active": "9c8b735e42b07a96",
+  "active": "5ca04711c8dc19bc",
   "lastOpenFiles": [
-    "端口与INOUT指令.md",
-    "章节和代码知识index/代码/c3代码.md",
-    "章节和代码知识index/0汇编语法.md",
-    "硬盘端口.md",
-    "章节和代码知识index/3 完善MBR.md",
-    "CHSLBA.md",
-    "硬盘.md",
-    "2025-11-27.md",
-    "中断-功能号.md",
-    "中断.md",
-    "寄存器.md",
-    "章节和代码知识index/dfs.md",
-    "picture/pictures/picture1/未命名 1.md",
-    "picture/pictures/picture1/未命名.md",
-    "picture/pictures/picture1/刷题.md",
-    "picture/pictures/picture1/每天.md",
-    "章节和代码知识index/2 编写MBR主引导记录.md",
-    "章节和代码知识index/代码/c2代码.md",
-    "章节和代码知识index/0启动流程.md",
-    "章节和代码知识index/0整体思路.md",
-    "获取内存以及代码讲解.md",
-    "NASM汇编器.md",
+    "index/14梳理.md",
+    "index/14 文件系统.md",
+    "inode.md",
+    "FAT文件系统.md",
+    "目录项.md",
+    "index/11 用户进程.md",
+    "index/12 进一步完善内核.md",
+    "硬链接.md",
+    "14梳理.md",
+    "系统崩溃.md",
+    "电子设备.md",
+    "计算.md",
+    "编程语言.md",
+    "多任务.md",
+    "内存保护.md",
+    "inode索引.md",
+    "页面.md",
+    "页帧.md",
+    "物理内存.md",
+    "日志.md",
+    "随机存取存储器 (RAM).md",
+    "虚拟地址.md",
+    "中央处理器 (CPU).md",
+    "index/5 物理虚拟内存-分页.md",
+    "段表.md",
+    "地址空间.md",
+    "设备I",
+    "filter_missing_files.py",
+    "missing_files.txt",
+    "debug_processed_links.txt",
+    "debug_existing_filenames.txt",
+    "index/操作系统真象还原 (郑纲) (Z-Library).pdf",
+    "process_links.py",
+    "index/7 中断机制.md.tmp.69527.1764747243260",
+    "index/part2索引.md.tmp.69527.1764746978149",
+    "index/操作系统真象还原 (郑纲) (Z-Library)(3)/操作系统真象还原 (郑纲) (Z-Library)_310-771.pdf",
     "picture/Pasted image 20251127155444.png",
-    "南桥北桥芯片.md",
-    "总线.md",
     "picture/Pasted image 20251127151953.png",
-    "章节和代码知识index/7中断.md",
-    "中断与操作系统.md",
-    "3 完善MBR.md.tmp.54503.1764032890126",
-    "2 编写MBR主引导记录.md.tmp.54503.1764032821415",
-    "1 操作系统是什么.md.tmp.54503.1764032780091",
-    "ROM与RAM.md.tmp.54503.1764031802903",
-    "vstart虚拟起始地址.md.tmp.54503.1764031802843",
-    "实模式.md.tmp.54503.1764031713472",
-    "NASM汇编器.md.tmp.54503.1764031657719",
-    "BIOS.md.tmp.54503.1764031657666",
-    "MBR主引导记录.md.tmp.54503.1764031575371",
-    "启动流程.md.tmp.54503.1764031575321",
     "picture/pictures/Pasted image 20250508185133.png",
     "picture/pictures/Pasted image 20250508185040.png",
     "picture/pictures/Pasted image 20250508174727.png",
